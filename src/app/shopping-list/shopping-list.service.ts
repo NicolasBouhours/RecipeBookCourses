@@ -16,4 +16,8 @@ export class ShoppingListService {
     this.items.push(... items);
   }
 
+  addItem(item: Ingredient) {
+    this.items.push(item);
+  }
+
 }
