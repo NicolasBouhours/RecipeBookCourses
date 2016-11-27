@@ -5,39 +5,29 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
-import { RecipesComponent } from './recipes';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { DropdownDirective } from './dropdown.directive';
 
 import { RecipeService } from './recipes/recipe.service';
 import { ShoppingListService} from './shopping-list/shopping-list.service';
 
 import { routing } from './app.routing';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { RecipeStartComponent } from './recipes/recipe-start.component';
 
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { RecipesModule } from './recipes/recipes.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeItemComponent,
-    RecipeDetailComponent,
-    DropdownDirective,
-    RecipeEditComponent,
-    RecipeStartComponent
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
     HttpModule,
     routing,
-    ShoppingListModule
+    ShoppingListModule,
+    RecipesModule
   ],
   providers: [RecipeService, ShoppingListService],
   bootstrap: [AppComponent]
