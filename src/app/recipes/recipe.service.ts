@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, Response} from '@angular/http';
 import 'rxjs/Rx';
 import { Recipe } from './recipe';
@@ -6,6 +6,8 @@ import { Ingredient } from '../shared/ingredient';
 
 @Injectable()
 export class RecipeService {
+  recipesChanged = new EventEmitter<Recipe[]>();
+
   private recipes: Recipe[] = [
     new Recipe('Dummy', 'Tommy', 'http://www.dietetiqueconseil.com/medias/images/photo-salade1.jpg', [
       new Ingredient('French Fries', 2),
@@ -33,7 +35,7 @@ export class RecipeService {
   }
 
   deleteRecipe(recipe: Recipe) {
-    this.recipes = this.recipes.splice(this.recipes.indexOf(recipe), 1);
+    this.recipes.splice(this.recipes.indexOf(recipe), 1);
   }
 
   storeData() {
@@ -50,6 +52,7 @@ export class RecipeService {
     .subscribe(
       (data: Recipe[]) => {
         this.recipes = data;
+        this.recipesChanged.emit(this.recipes);
       }
     );
   }
