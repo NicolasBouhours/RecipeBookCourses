@@ -10,7 +10,6 @@ import { DropdownDirective } from './dropdown.directive';
 import { RecipeService } from './recipes/recipe.service';
 import { ShoppingListService} from './shopping-list/shopping-list.service';
 import { routing } from './app.routing';
-import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { HomeComponent } from './home.component';
 
 
@@ -24,8 +23,7 @@ import { HomeComponent } from './home.component';
   imports: [
     BrowserModule,
     HttpModule,
-    routing,
-    ShoppingListModule
+    routing
   ],
   providers: [RecipeService, ShoppingListService],
   bootstrap: [AppComponent]
